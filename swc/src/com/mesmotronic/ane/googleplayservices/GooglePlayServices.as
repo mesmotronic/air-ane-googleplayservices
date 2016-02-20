@@ -1,36 +1,30 @@
 package com.mesmotronic.ane.googleplayservices
 {
 	import flash.external.ExtensionContext;
+	import flash.system.Capabilities;
 
 	public class GooglePlayServices
 	{
-		private static var _googlePlayServices:GooglePlayServices;
+		// Static initializer
+		{
+			init();	
+		}
+		
+		private static var context:ExtensionContext;
 		
 		public static function get isSupported():Boolean
 		{
-			return !!googlePlayServices.context;
+			return !!context;
 		}
 		
-		public static function get googlePlayServices():GooglePlayServices
+		private static function init():void
 		{
-			if (!_googlePlayServices)
-			{
-				_googlePlayServices = new GooglePlayServices(new Singleton());
-			}
+			var version:String = Capabilities.version.substr(0,3);
 			
-			return _googlePlayServices;
-		}
-		
-		// Local
-		
-		protected var context:ExtensionContext;
-		
-		public function GooglePlayServices(singleton:Singleton)
-		{
-			if (!singleton) throw new Error('GooglePlayServices is a singleton!');
-			context = ExtensionContext.createExtensionContext('com.mesmotronic.ane.googleplayservices', '');
+			if (version == 'AND')
+			{
+				context = ExtensionContext.createExtensionContext('com.mesmotronic.ane.googleplayservices', '');
+			}
 		}
 	}
 }
-
-class Singleton {}
