@@ -5,6 +5,15 @@ package com.mesmotronic.ane.googleplayservices
 
 	public class GooglePlayServices
 	{
+		/* Public */
+		
+		public static function get isSupported():Boolean
+		{
+			return !!context;
+		}
+		
+		/* Private */
+		
 		// Static initializer
 		{
 			init();	
@@ -12,18 +21,17 @@ package com.mesmotronic.ane.googleplayservices
 		
 		private static var context:ExtensionContext;
 		
-		public static function get isSupported():Boolean
-		{
-			return !!context;
-		}
-		
 		private static function init():void
 		{
 			var version:String = Capabilities.version.substr(0,3);
 			
-			if (version == 'AND')
+			switch (version)
 			{
-				context = ExtensionContext.createExtensionContext('com.mesmotronic.ane.googleplayservices', '');
+				case 'AND':
+				{
+					context = ExtensionContext.createExtensionContext('com.mesmotronic.ane.googleplayservices', '');
+					break;
+				}
 			}
 		}
 	}
