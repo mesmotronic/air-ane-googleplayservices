@@ -21,6 +21,14 @@
             </applicationDeployment> 
         </platform>
         
+        <platform name="Android-x64"> 
+            <applicationDeployment> 
+                <nativeLibrary>air-ane-googleplayservices-jar.jar</nativeLibrary> 
+                <initializer>com.mesmotronic.ane.googleplayservices.GooglePlayServicesExtension</initializer> 
+                <finalizer>com.mesmotronic.ane.googleplayservices.GooglePlayServicesExtension</finalizer> 
+            </applicationDeployment> 
+        </platform>
+        
         <platform name="Android-x86"> 
             <applicationDeployment> 
                 <nativeLibrary>air-ane-googleplayservices-jar.jar</nativeLibrary> 
